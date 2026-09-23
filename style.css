@@ -1,0 +1,142 @@
+@font-face {
+  font-family: "Pond Display";
+  src: url("assets/Lilypad-healthy/Syne_Tactile/SyneTactile-Regular.ttf")
+    format("truetype");
+  font-display: swap;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background: black;
+}
+
+canvas {
+  display: block;
+  opacity: 0;
+  transition: opacity 1400ms ease-out, filter 900ms ease-in-out;
+}
+
+.pond-canvas-ready canvas {
+  opacity: 1;
+}
+
+.pond-covered canvas {
+  filter: blur(16px);
+}
+
+.pond-covered.pond-entering canvas {
+  filter: blur(0);
+}
+
+.pond-cover {
+  position: fixed;
+  inset: 0;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  color: white;
+  background: rgba(4, 12, 14, 0.18);
+  opacity: 1;
+  transition: opacity 900ms ease-in-out;
+}
+
+.pond-entering .pond-cover {
+  opacity: 0;
+}
+
+.pond-covered canvas {
+  pointer-events: none;
+}
+
+.pond-cover__title,
+.pond-cover__start {
+  font-family: "Pond Display", cursive;
+  letter-spacing: 0;
+  text-shadow: 0 4px 18px rgba(0, 0, 0, 0.6);
+}
+
+.pond-cover__title {
+  margin: 0;
+  font-size: 73px;
+  font-weight: 400;
+  line-height: 0.9;
+}
+
+.pond-cover__start {
+  padding: 8px 12px;
+  border: 0;
+  color: inherit;
+  background: transparent;
+  font-size: 17px;
+  line-height: 1;
+  cursor: pointer;
+  transition: color 160ms ease;
+}
+
+.pond-cover__start:hover {
+  color: #fff7b2;
+}
+
+.pond-cover__start:focus-visible {
+  outline: none;
+}
+
+.pond-cover__start[hidden] {
+  display: none;
+}
+
+.pond-cover__progress {
+  width: min(220px, 60vw);
+  height: 2px;
+  border-radius: 2px;
+  background: rgba(255, 255, 255, 0.22);
+  overflow: hidden;
+}
+
+.pond-cover__progress-fill {
+  height: 100%;
+  width: 0%;
+  background: rgba(255, 255, 255, 0.85);
+  transition: width 180ms ease-out;
+}
+
+.pond-debug-button {
+  position: fixed;
+  top: 12px;
+  right: 12px;
+  z-index: 20;
+  padding: 6px 10px;
+  font-family: system-ui, sans-serif;
+  font-size: 12px;
+  color: #ffe65a;
+  background: rgba(0, 0, 0, 0.75);
+  border: 1px solid rgba(255, 230, 90, 0.6);
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.pond-debug-button:hover {
+  background: rgba(0, 0, 0, 0.9);
+}
+
+.pond-debug-button[hidden] {
+  display: none;
+}
+
+@media (max-width: 600px) {
+  .pond-cover__title {
+    font-size: 45px;
+  }
+
+  .pond-cover__start {
+    font-size: 14px;
+  }
+}

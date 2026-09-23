@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>pond.</title>
+
+    <link rel="stylesheet" href="style.css" />
+
+    <!-- Keep classic scripts in order so p5 global callbacks and shared state remain available. -->
+    <script src="https://cdn.jsdelivr.net/npm/p5@1.11.1/lib/p5.min.js"></script>
+    <script src="performance.js" defer></script>
+    <script src="tree.js" defer></script>
+    <script src="sketch.js" defer></script>
+    <script src="audio.js" defer></script>
+    <script src="state-reveal.js" defer></script>
+    <script src="dialogue.js" defer></script>
+    <script src="fish.js" defer></script>
+    <script src="placement-editor.js" defer></script>
+    <script src="pond-rendering.js" defer></script>
+    <script src="pond-mask-editor.js" defer></script>
+    <script src="tree-interaction.js" defer></script>
+    <script src="vegetation.js" defer></script>
+    <script src="input-events.js" defer></script>
+    <script src="app.js" defer></script>
+  </head>
+
+  <body class="pond-covered">
+    <div class="pond-cover" id="pond-cover" aria-labelledby="pond-title">
+      <h1 class="pond-cover__title" id="pond-title">pond.</h1>
+      <div
+        class="pond-cover__progress"
+        id="pond-progress"
+        role="progressbar"
+        aria-label="Loading"
+        aria-valuemin="0"
+        aria-valuemax="100"
+        aria-valuenow="0"
+      >
+        <div class="pond-cover__progress-fill" id="pond-progress-fill"></div>
+      </div>
+      <button class="pond-cover__start" id="pond-start" type="button" hidden>
+        Start
+      </button>
+    </div>
+    <!-- Debug only: shown/hidden by togglePlacementMode() (press P in the
+         running experience), never visible to an ordinary visitor. -->
+    <button
+      class="pond-debug-button"
+      id="pond-reroll-lilypads"
+      type="button"
+      hidden
+    >
+      ↻ Reroll lily pads
+    </button>
+  </body>
+</html>
